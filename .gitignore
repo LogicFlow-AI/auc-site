@@ -29,3 +29,13 @@ site/.next/
 site/out/
 site/node_modules/
 site/.env*.local
+
+# Strapi
+strapi/.tmp/
+strapi/build/
+strapi/dist/
+strapi/.cache/
+strapi/.strapi/
+strapi/database/
+strapi/node_modules/
+strapi/.env
