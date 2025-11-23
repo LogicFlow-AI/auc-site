@@ -1,0 +1,9 @@
+---
+title: "Content Page: What do you think?"
+date: Tue, 28 Nov 2023 12:39:12 +0000
+link: https://adventist.org.au/et_body_layout/pages-in-specific-categories-news-3/
+categories: []
+tags: []
+---
+
+[et_pb_section fb_built="1" _builder_version="4.23" _module_preset="default" global_colors_info="{}"][et_pb_row use_custom_gutter="on" gutter_width="2" _builder_version="4.23" _module_preset="default" custom_margin="40px||||false|false" hover_enabled="0" global_colors_info="{}" sticky_enabled="0"][et_pb_column type="4_4" _builder_version="4.23" _module_preset="default" global_colors_info="{}"][et_pb_text _builder_version="4.23.1" _module_preset="default" hover_enabled="0" sticky_enabled="0"][category_link][/et_pb_text][et_pb_post_title author="off" comments="off" featured_image="off" _builder_version="4.23.1" _module_preset="default" title_font="|700||on|||||" title_text_color="#434242" title_font_size="36px" meta_font="Montserrat|||on|||||" meta_font_size="15px" hover_enabled="0" global_colors_info="{}" date="off" sticky_enabled="0"][/et_pb_post_title][et_pb_post_content _builder_version="4.23.1" _module_preset="default" text_font="Montserrat|300|||||||" text_font_size="15px" text_line_height="1.8em" header_font="|700||on|||||" header_text_color="#434242" header_2_font="|600||on|||||" header_2_text_color="#434242" background_color="#FFFFFF" custom_margin="0px|0px|0px|0px|false|false" custom_padding="50px|75px|50px|75px|true|true" custom_padding_tablet="40px|50px|40px|50px|true|true" custom_padding_phone="30px|40px|30px|40px|true|true" custom_padding_last_edited="on|phone" border_radii="on|4px|4px|4px|4px" border_radii_image="on|4px|4px|4px|4px" border_width_top_image="2px" border_color_top_image="#FF8200" box_shadow_style="preset3" box_shadow_vertical="5px" box_shadow_color="rgba(0,0,0,0.1)" global_colors_info="{}"][/et_pb_post_content][/et_pb_column][/et_pb_row][/et_pb_section]

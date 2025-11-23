@@ -1,0 +1,22 @@
+{
+  "name": "auc-site-content",
+  "version": "1.0.0",
+  "description": "WordPress content export parser for TSX rebuild",
+  "main": "parse-wordpress-export.js",
+  "scripts": {
+    "parse": "node parse-wordpress-export.js",
+    "parse:install": "npm install"
+  },
+  "dependencies": {
+    "xml2js": "^0.6.2"
+  },
+  "keywords": [
+    "wordpress",
+    "export",
+    "parser",
+    "tsx"
+  ],
+  "author": "",
+  "license": "MIT"
+}
+
