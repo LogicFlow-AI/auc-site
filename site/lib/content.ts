@@ -34,16 +34,22 @@ export function getAllPosts(): Post[] {
   const allPostsData = fileNames
     .filter(name => name.endsWith('.md'))
     .map((fileName) => {
-      const fullPath = path.join(postsDirectory, fileName);
-      const fileContents = fs.readFileSync(fullPath, 'utf8');
-      const { data, content } = matter(fileContents);
-      
-      return {
-        ...data,
-        content,
-        postId: fileName.split('-')[0],
-      } as Post;
-    });
+      try {
+        const fullPath = path.join(postsDirectory, fileName);
+        const fileContents = fs.readFileSync(fullPath, 'utf8');
+        const { data, content } = matter(fileContents);
+        
+        return {
+          ...data,
+          content,
+          postId: fileName.split('-')[0],
+        } as Post;
+      } catch (error) {
+        console.warn(`Error parsing post ${fileName}:`, error);
+        return null;
+      }
+    })
+    .filter((post): post is Post => post !== null);
 
   // Sort posts by date
   return allPostsData.sort((a, b) => {
@@ -63,15 +69,21 @@ export function getAllPages(): Page[] {
   const allPagesData = fileNames
     .filter(name => name.endsWith('.md'))
     .map((fileName) => {
-      const fullPath = path.join(pagesDirectory, fileName);
-      const fileContents = fs.readFileSync(fullPath, 'utf8');
-      const { data, content } = matter(fileContents);
-      
-      return {
-        ...data,
-        content,
-      } as Page;
-    });
+      try {
+        const fullPath = path.join(pagesDirectory, fileName);
+        const fileContents = fs.readFileSync(fullPath, 'utf8');
+        const { data, content } = matter(fileContents);
+        
+        return {
+          ...data,
+          content,
+        } as Page;
+      } catch (error) {
+        console.warn(`Error parsing page ${fileName}:`, error);
+        return null;
+      }
+    })
+    .filter((page): page is Page => page !== null);
 
   return allPagesData;
 }
