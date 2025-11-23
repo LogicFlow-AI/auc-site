@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { getAllPages, formatDate } from '@/lib/content';
 
-export default function PagesPage() {
-  const pages = getAllPages();
+export default async function PagesPage() {
+  const pages = await getAllPages();
 
   return (
     <main className="min-h-screen bg-gray-50">

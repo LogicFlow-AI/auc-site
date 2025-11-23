@@ -1,45 +1,154 @@
 import Link from 'next/link';
+import { navigation } from '@/lib/design-tokens';
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-white border-t border-gray-200 text-gray-600">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Quick Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4">About</h3>
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Links</h2>
             <ul className="space-y-2">
-              <li><Link href="/about" className="hover:text-white transition-colors">Who We Are</Link></li>
-              <li><Link href="/beliefs" className="hover:text-white transition-colors">What We Believe</Link></li>
-              <li><Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
+              {navigation.footer.quickLinks.map((link) => {
+                const navItem = navigation.main.find(n => n.label === link);
+                return (
+                  <li key={link}>
+                    <Link
+                      href={navItem?.href || '#'}
+                      className="text-sm text-gray-600 hover:text-[#fc842b] transition-colors"
+                    >
+                      {link}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
+
+          {/* Conferences */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Ministries</h3>
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">Conferences</h2>
             <ul className="space-y-2">
-              <li><Link href="/youth" className="hover:text-white transition-colors">Youth</Link></li>
-              <li><Link href="/children" className="hover:text-white transition-colors">Children</Link></li>
-              <li><Link href="/women" className="hover:text-white transition-colors">Women&apos;s Ministries</Link></li>
+              {navigation.footer.conferences.map((conference) => (
+                <li key={conference}>
+                  <Link
+                    href={`/church-near-me/${conference.toLowerCase().replace(/\s+/g, '-')}`}
+                    className="text-sm text-gray-600 hover:text-[#fc842b] transition-colors"
+                  >
+                    {conference}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
+
+          {/* Resources */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Resources</h3>
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">Resources</h2>
             <ul className="space-y-2">
-              <li><Link href="/posts" className="hover:text-white transition-colors">News</Link></li>
-              <li><Link href="/media" className="hover:text-white transition-colors">Media</Link></li>
-              <li><Link href="/resources" className="hover:text-white transition-colors">Resources</Link></li>
+              {navigation.footer.resources.map((resource) => (
+                <li key={resource}>
+                  <Link
+                    href={`/${resource.toLowerCase().replace(/\s+/g, '-')}`}
+                    className="text-sm text-gray-600 hover:text-[#fc842b] transition-colors"
+                  >
+                    {resource}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
+
+          {/* Media */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Connect</h3>
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">Media</h2>
             <ul className="space-y-2">
-              <li><Link href="/churches" className="hover:text-white transition-colors">Find a Church</Link></li>
-              <li><Link href="/events" className="hover:text-white transition-colors">Events</Link></li>
-              <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+              {navigation.footer.media.map((media) => (
+                <li key={media}>
+                  <Link
+                    href={`/media/${media.toLowerCase().replace(/\s+/g, '-')}`}
+                    className="text-sm text-gray-600 hover:text-[#fc842b] transition-colors"
+                  >
+                    {media}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t border-gray-800 text-center">
-          <p>&copy; {new Date().getFullYear()} Australia&apos;s Church of Seventh-day Adventists. All rights reserved.</p>
+
+        {/* Bottom Section */}
+        <div className="mt-12 pt-8 border-t border-gray-200">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            {/* Copyright and Links */}
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 text-sm">
+              <Link href="/sitemap" className="text-gray-600 hover:text-[#fc842b] transition-colors">
+                Site Map
+              </Link>
+              <span className="text-gray-400">|</span>
+              <Link href="/privacy" className="text-gray-600 hover:text-[#fc842b] transition-colors">
+                Privacy Policy
+              </Link>
+              <span className="text-gray-400">|</span>
+              <Link href="/contact" className="text-gray-600 hover:text-[#fc842b] transition-colors">
+                Contact Us
+              </Link>
+              <span className="text-gray-400">|</span>
+              <Link href="/auc/careers" className="text-gray-600 hover:text-[#fc842b] transition-colors">
+                Careers
+              </Link>
+              <span className="ml-2">Australian Union Conference ©{currentYear}</span>
+            </div>
+
+            {/* Social Media Icons */}
+            <div className="flex items-center space-x-4">
+              <a
+                href="https://www.facebook.com/AdventistsAustralia/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-[#fc842b] transition-colors"
+                aria-label="Facebook"
+              >
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/adventistsaustralia/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-[#fc842b] transition-colors"
+                aria-label="Instagram"
+              >
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg>
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UC3MzOvEGUiZdEYfj_r0E_LA"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-[#fc842b] transition-colors"
+                aria-label="YouTube"
+              >
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          {/* Website Credits */}
+          <div className="mt-4 text-center text-xs text-gray-500">
+            Website by{' '}
+            <a href="https://www.theseospecialists.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#fc842b] transition-colors">
+              Australia&apos;s SEO Specialists
+            </a>
+            {' '}by LogicFlow AI
+          </div>
         </div>
       </div>
     </footer>

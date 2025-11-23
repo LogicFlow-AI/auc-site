@@ -1,11 +1,11 @@
 /**
- * Strapi API client for Next.js
+ * LogicFlow (Strapi) API client for Next.js
  * 
- * Replace the static content loading with Strapi API calls
+ * Replace the static content loading with LogicFlow API calls
  */
 
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
-const STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN || '';
+const LOGICFLOW_URL = process.env.NEXT_PUBLIC_LOGICFLOW_URL || process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+const LOGICFLOW_API_TOKEN = process.env.LOGICFLOW_API_TOKEN || process.env.STRAPI_API_TOKEN || '';
 
 export interface StrapiPost {
   id: number;
@@ -54,10 +54,10 @@ export interface StrapiResponse<T> {
 export async function getStrapiPosts(): Promise<StrapiPost[]> {
   try {
     const response = await fetch(
-      `${STRAPI_URL}/api/posts?populate=*&sort=publishedAt:desc`,
+      `${LOGICFLOW_URL}/api/posts?populate=*&sort=publishedAt:desc`,
       {
         headers: {
-          'Authorization': `Bearer ${STRAPI_API_TOKEN}`,
+          'Authorization': `Bearer ${LOGICFLOW_API_TOKEN}`,
         },
         next: { revalidate: 60 } // Revalidate every 60 seconds
       }
@@ -81,10 +81,10 @@ export async function getStrapiPosts(): Promise<StrapiPost[]> {
 export async function getStrapiPost(slug: string): Promise<StrapiPost | null> {
   try {
     const response = await fetch(
-      `${STRAPI_URL}/api/posts?filters[slug][$eq]=${slug}&populate=*`,
+      `${LOGICFLOW_URL}/api/posts?filters[slug][$eq]=${slug}&populate=*`,
       {
         headers: {
-          'Authorization': `Bearer ${STRAPI_API_TOKEN}`,
+          'Authorization': `Bearer ${LOGICFLOW_API_TOKEN}`,
         },
         next: { revalidate: 60 }
       }
@@ -108,10 +108,10 @@ export async function getStrapiPost(slug: string): Promise<StrapiPost | null> {
 export async function getStrapiPages(): Promise<StrapiPage[]> {
   try {
     const response = await fetch(
-      `${STRAPI_URL}/api/pages?sort=publishedAt:desc`,
+      `${LOGICFLOW_URL}/api/pages?sort=publishedAt:desc`,
       {
         headers: {
-          'Authorization': `Bearer ${STRAPI_API_TOKEN}`,
+          'Authorization': `Bearer ${LOGICFLOW_API_TOKEN}`,
         },
         next: { revalidate: 60 }
       }
@@ -135,10 +135,10 @@ export async function getStrapiPages(): Promise<StrapiPage[]> {
 export async function getStrapiPage(slug: string): Promise<StrapiPage | null> {
   try {
     const response = await fetch(
-      `${STRAPI_URL}/api/pages?filters[slug][$eq]=${slug}`,
+      `${LOGICFLOW_URL}/api/pages?filters[slug][$eq]=${slug}`,
       {
         headers: {
-          'Authorization': `Bearer ${STRAPI_API_TOKEN}`,
+          'Authorization': `Bearer ${LOGICFLOW_API_TOKEN}`,
         },
         next: { revalidate: 60 }
       }

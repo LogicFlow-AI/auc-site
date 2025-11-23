@@ -1,0 +1,5 @@
+# Use Git LFS for large files
+*.wpress filter=lfs diff=lfs merge=lfs -text
+*.zip filter=lfs diff=lfs merge=lfs -text
+*.sql filter=lfs diff=lfs merge=lfs -text
+

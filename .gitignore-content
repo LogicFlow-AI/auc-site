@@ -1,0 +1,8 @@
+# WordPress files (not needed for TSX rebuild)
+wp-content/
+*.wpress
+*.sql
+
+# Keep only content exports
+!content-export/
+!content-export/**

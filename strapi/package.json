@@ -1,8 +1,8 @@
 {
-  "name": "auc-strapi",
+  "name": "logicflow-cms",
   "private": true,
   "version": "0.1.0",
-  "description": "Strapi CMS for AUC Site",
+  "description": "LogicFlow CMS (Strapi) for AUC Site",
   "scripts": {
     "build": "strapi build",
     "develop": "strapi develop",
@@ -12,7 +12,8 @@
   "dependencies": {
     "@strapi/strapi": "^4.25.0",
     "@strapi/plugin-users-permissions": "^4.25.0",
-    "@strapi/plugin-i18n": "^4.25.0"
+    "@strapi/plugin-i18n": "^4.25.0",
+    "pg": "^8.11.3"
   },
   "devDependencies": {},
   "author": {

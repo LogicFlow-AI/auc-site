@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { getAllPosts, formatDate } from '@/lib/content';
 
-export default function PostsPage() {
-  const posts = getAllPosts();
+export default async function PostsPage() {
+  const posts = await getAllPosts();
 
   return (
     <main className="min-h-screen bg-gray-50">

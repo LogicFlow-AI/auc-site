@@ -1,6 +1,6 @@
-# Strapi CMS for AUC Site
+# LogicFlow CMS for AUC Site
 
-This is the Strapi headless CMS backend for the AUC website.
+This is LogicFlow (powered by Strapi) headless CMS backend for the AUC website, using Supabase PostgreSQL database.
 
 ## Prerequisites
 
@@ -27,21 +27,31 @@ cd strapi
 npm install
 ```
 
-### 3. Create Strapi App
+### 3. Set Up Supabase Database
+
+1. Create a Supabase project at https://supabase.com
+2. Get your database connection string from Supabase dashboard
+3. Copy `.env.example` to `.env` and fill in your Supabase credentials
+4. See `SUPABASE-SETUP.md` for detailed instructions
+
+### 4. Install Dependencies and Create LogicFlow App
 
 ```bash
-# If package.json setup doesn't work, use:
+# Install dependencies
+npm install
+
+# If Strapi isn't initialized, create it:
 npx create-strapi-app@latest . --quickstart --no-run
 ```
 
-### 4. Start Strapi
+### 5. Start LogicFlow (Strapi)
 
 ```bash
 npm run develop
 ```
 
 This will:
-- Start Strapi on http://localhost:1337
+- Start LogicFlow on http://localhost:1337
 - Open admin panel at http://localhost:1337/admin
 - Create your admin user on first run
 
