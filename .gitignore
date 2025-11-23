@@ -1,0 +1,25 @@
+# Only track content exports and documentation
+# WordPress files excluded
+wp-content/
+*.wpress
+*.sql
+*.sql.gz
+
+# Node/TSX project files (will be added later)
+node_modules/
+.next/
+out/
+dist/
+build/
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
