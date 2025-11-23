@@ -1,15 +1,23 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getPostBySlug, markdownToHtml, formatDate } from '@/lib/content';
+import { getPostBySlug, getAllPosts, markdownToHtml, formatDate } from '@/lib/content';
 
 interface PostPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
+}
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+  return posts.map((post) => ({
+    id: post.postId || post.link.split('/').pop() || '',
+  }));
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  const post = await getPostBySlug(params.id);
+  const { id } = await params;
+  const post = await getPostBySlug(id);
 
   if (!post) {
     notFound();
