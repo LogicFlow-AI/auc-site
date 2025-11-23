@@ -23,3 +23,9 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# Next.js site
+site/.next/
+site/out/
+site/node_modules/
+site/.env*.local
