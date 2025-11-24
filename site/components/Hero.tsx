@@ -3,12 +3,23 @@ import Link from 'next/link';
 export default function Hero() {
   return (
     <section className="relative bg-gray-900 text-white overflow-hidden">
-      {/* Video/Background Placeholder */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-gray-900 opacity-90">
-        {/* Video would go here */}
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/AUC-compressed.mp4" type="video/mp4" />
+          {/* Fallback for browsers that don't support video */}
+        </video>
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-blue-800/70 to-gray-900/80"></div>
       </div>
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
         <div className="max-w-5xl">
           <Link
             href="/ministries/bible-study-online"
