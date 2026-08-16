@@ -3,23 +3,6 @@ import Link from 'next/link';
 export default function Hero() {
   return (
     <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-gray-950">
-      {/* Video Background */}
-      <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          aria-hidden="true"
-          className="w-full h-full object-cover"
-        >
-          <source src="/AUC-compressed.mp4" type="video/mp4" />
-        </video>
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/50"></div>
-      </div>
-      
       <div className="relative z-10 max-w-4xl px-4 text-center text-white">
         <h1 className="text-4xl md:text-6xl font-bold leading-tight">
           Seventh-day Adventist Church in Australia
