@@ -1,11 +1,60 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
+import JsonLd from '@/components/JsonLd';
+import {
+  DEFAULT_DESCRIPTION,
+  ORGANIZATION_NAME,
+  SITE_NAME,
+  SITE_URL,
+  absoluteUrl,
+} from '@/lib/seo';
 
-export default async function Home() {
+export const metadata: Metadata = {
+  title: { absolute: SITE_NAME },
+  description: DEFAULT_DESCRIPTION,
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    url: '/',
+    title: SITE_NAME,
+    description: DEFAULT_DESCRIPTION,
+  },
+};
+
+const homePageSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: ORGANIZATION_NAME,
+      alternateName: ['Adventists Australia', SITE_NAME],
+      url: SITE_URL,
+      sameAs: [
+        'https://www.facebook.com/AdventistsAustralia/',
+        'https://www.instagram.com/adventistsaustralia/',
+        'https://www.youtube.com/channel/UC3MzOvEGUiZdEYfj_r0E_LA',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      name: SITE_NAME,
+      alternateName: 'Adventists Australia',
+      url: absoluteUrl('/'),
+      inLanguage: 'en-AU',
+      publisher: { '@id': `${SITE_URL}/#organization` },
+    },
+  ],
+};
+
+export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      <JsonLd data={homePageSchema} />
       <Header />
       
       <main className="flex-grow">
@@ -101,7 +150,7 @@ export default async function Home() {
               Text about Bible Study. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </p>
             <Link
-              href="/bible-study/read-more"
+              href="/ministries/bible-study-online/"
               className="inline-block px-8 py-4 bg-[#fc842b] hover:bg-[#e6731f] text-white font-semibold rounded transition-all duration-200 shadow-lg hover:shadow-xl"
             >
               READ MORE
@@ -137,10 +186,10 @@ export default async function Home() {
                   Maecenas tempus augue non euismod elementum. Curabitur a nunc libero. Phasellus orci mauris, imperdiet vel magna.
                 </p>
                 <Link
-                  href="/testimonial/read-more"
+                  href="/posts/"
                   className="inline-block px-6 py-3 bg-[#fc842b] hover:bg-[#e6731f] text-white font-semibold rounded transition-all duration-200"
                 >
-                  READ MORE
+                  READ STORIES AND NEWS
                 </Link>
               </div>
             </div>
@@ -179,22 +228,21 @@ export default async function Home() {
                   </h3>
                   <div className="space-y-2">
                     {[
-                      'South East Queensland',
-                      'Northern New South Wales',
-                      'Greater Sydney',
-                      'South New South Wales',
-                      'Victoria',
-                      'South Australia',
-                      'Western Australia',
-                      'Northern Australia',
-                      'Tasmania',
+                      { label: 'South East Queensland', href: '/church-near-me/churches-in-south-queensland/' },
+                      { label: 'Northern New South Wales', href: '/church-near-me/churches-in-north-nsw/' },
+                      { label: 'Greater Sydney', href: '/church-near-me/churches-in-sydney/' },
+                      { label: 'South New South Wales', href: '/church-near-me/churches-in-south-nsw/' },
+                      { label: 'Victoria', href: '/church-near-me/churches-in-victoria/' },
+                      { label: 'Western Australia', href: '/church-near-me/churches-in-perth-and-western-australia/' },
+                      { label: 'Northern Australia', href: '/church-near-me/churches-in-northern-australia/' },
+                      { label: 'Tasmania', href: '/church-near-me/churches-in-tasmania/' },
                     ].map((location) => (
                       <Link
-                        key={location}
-                        href={`/where-we-are/${location.toLowerCase().replace(/\s+/g, '-')}`}
+                        key={location.label}
+                        href={location.href}
                         className="block px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded text-gray-700 hover:text-[#fc842b] transition-colors font-medium"
                       >
-                        {location}
+                        {location.label}
                       </Link>
                     ))}
                   </div>

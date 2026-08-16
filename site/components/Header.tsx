@@ -25,13 +25,13 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            <Link href="/what-we-do" className="text-sm font-medium text-white hover:text-[#fc842b] transition-colors">
+            <Link href="/ministries/" className="text-sm font-medium text-white hover:text-[#fc842b] transition-colors">
               WHAT WE DO
             </Link>
-            <Link href="/what-we-believe" className="text-sm font-medium text-white hover:text-[#fc842b] transition-colors">
+            <Link href="/statements-of-belief/" className="text-sm font-medium text-white hover:text-[#fc842b] transition-colors">
               WHAT WE BELIEVE
             </Link>
-            <Link href="/where-we-are" className="text-sm font-medium text-white hover:text-[#fc842b] transition-colors">
+            <Link href="/church-near-me/" className="text-sm font-medium text-white hover:text-[#fc842b] transition-colors">
               WHERE WE ARE
             </Link>
             {/* Search Icon */}
@@ -48,7 +48,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             className="lg:hidden text-white"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => setMobileMenuOpen((isOpen) => !isOpen)}
             aria-label="Toggle menu"
           >
             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -65,13 +65,13 @@ export default function Header() {
         {mobileMenuOpen && (
           <div className="lg:hidden py-4 bg-gray-900/95 rounded-lg mt-2">
             <div className="flex flex-col space-y-3">
-              <Link href="/what-we-do" className="text-sm font-medium text-white hover:text-[#fc842b] transition-colors px-2 py-1">
+              <Link href="/ministries/" className="text-sm font-medium text-white hover:text-[#fc842b] transition-colors px-2 py-1">
                 WHAT WE DO
               </Link>
-              <Link href="/what-we-believe" className="text-sm font-medium text-white hover:text-[#fc842b] transition-colors px-2 py-1">
+              <Link href="/statements-of-belief/" className="text-sm font-medium text-white hover:text-[#fc842b] transition-colors px-2 py-1">
                 WHAT WE BELIEVE
               </Link>
-              <Link href="/where-we-are" className="text-sm font-medium text-white hover:text-[#fc842b] transition-colors px-2 py-1">
+              <Link href="/church-near-me/" className="text-sm font-medium text-white hover:text-[#fc842b] transition-colors px-2 py-1">
                 WHERE WE ARE
               </Link>
             </div>
@@ -81,4 +81,3 @@ export default function Header() {
     </header>
   );
 }
-

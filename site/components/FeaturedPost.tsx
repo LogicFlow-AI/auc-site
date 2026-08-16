@@ -17,7 +17,7 @@ export default function FeaturedPost({ post }: FeaturedPostProps) {
             </span>
           )}
           <h2 className="text-3xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">
-            <Link href={`/posts/${post.postId || 'unknown'}`}>
+            <Link href={post.path}>
               {post.title}
             </Link>
           </h2>
@@ -32,14 +32,13 @@ export default function FeaturedPost({ post }: FeaturedPostProps) {
             </p>
           )}
           <Link
-            href={`/posts/${post.postId || 'unknown'}`}
+            href={post.path}
             className="inline-block px-6 py-2 bg-white text-gray-900 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
           >
-            Read More →
+            Read {post.title}
           </Link>
         </div>
       </div>
     </article>
   );
 }
-

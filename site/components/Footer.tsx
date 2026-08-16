@@ -33,12 +33,12 @@ export default function Footer() {
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Conferences</h2>
             <ul className="space-y-2">
               {navigation.footer.conferences.map((conference) => (
-                <li key={conference}>
+                <li key={conference.label}>
                   <Link
-                    href={`/church-near-me/${conference.toLowerCase().replace(/\s+/g, '-')}`}
+                    href={conference.href}
                     className="text-sm text-gray-600 hover:text-[#fc842b] transition-colors"
                   >
-                    {conference}
+                    {conference.label}
                   </Link>
                 </li>
               ))}
@@ -50,12 +50,12 @@ export default function Footer() {
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Resources</h2>
             <ul className="space-y-2">
               {navigation.footer.resources.map((resource) => (
-                <li key={resource}>
+                <li key={resource.label}>
                   <Link
-                    href={`/${resource.toLowerCase().replace(/\s+/g, '-')}`}
+                    href={resource.href}
                     className="text-sm text-gray-600 hover:text-[#fc842b] transition-colors"
                   >
-                    {resource}
+                    {resource.label}
                   </Link>
                 </li>
               ))}
@@ -67,12 +67,12 @@ export default function Footer() {
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Media</h2>
             <ul className="space-y-2">
               {navigation.footer.media.map((media) => (
-                <li key={media}>
+                <li key={media.label}>
                   <Link
-                    href={`/media/${media.toLowerCase().replace(/\s+/g, '-')}`}
+                    href={media.href}
                     className="text-sm text-gray-600 hover:text-[#fc842b] transition-colors"
                   >
-                    {media}
+                    {media.label}
                   </Link>
                 </li>
               ))}
@@ -85,16 +85,12 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright and Links */}
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 text-sm">
-              <Link href="/sitemap" className="text-gray-600 hover:text-[#fc842b] transition-colors">
+              <a href="/sitemap.xml" className="text-gray-600 hover:text-[#fc842b] transition-colors">
                 Site Map
-              </Link>
+              </a>
               <span className="text-gray-400">|</span>
-              <Link href="/privacy" className="text-gray-600 hover:text-[#fc842b] transition-colors">
+              <Link href="/pages/privacy-policy/" className="text-gray-600 hover:text-[#fc842b] transition-colors">
                 Privacy Policy
-              </Link>
-              <span className="text-gray-400">|</span>
-              <Link href="/contact" className="text-gray-600 hover:text-[#fc842b] transition-colors">
-                Contact Us
               </Link>
               <span className="text-gray-400">|</span>
               <Link href="/auc/careers" className="text-gray-600 hover:text-[#fc842b] transition-colors">
@@ -154,4 +150,3 @@ export default function Footer() {
     </footer>
   );
 }
-
